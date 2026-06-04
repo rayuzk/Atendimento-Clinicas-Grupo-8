@@ -1,4 +1,4 @@
-from modelo.paciente import Paciente
+from model.paciente import Paciente
 
 class ControladorPaciente:
 
