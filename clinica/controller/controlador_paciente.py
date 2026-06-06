@@ -50,3 +50,6 @@ class ControladorPaciente:
                 paciente.celular = novo_celular
                 paciente.idade = nova_idade
                 break
+    
+    def abrir_tela(self):
+        pass

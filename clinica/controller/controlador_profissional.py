@@ -47,3 +47,6 @@ class ControladorProfissional:
                 profissional.nome = novo_nome
                 profissional.celular = novo_celular
                 break
+    
+    def abrir_tela(self):
+        pass

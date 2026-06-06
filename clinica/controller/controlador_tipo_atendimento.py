@@ -33,3 +33,6 @@ class ControladorTipoAtendimento:
             if tipo_atendimento.descricao == descricao:
                 tipo_atendimento.descricao = nova_descricao
                 break
+
+    def abrir_tela(self):
+        pass

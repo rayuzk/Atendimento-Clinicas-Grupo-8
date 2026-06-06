@@ -23,4 +23,7 @@ class ControladorClinica:
             if clinica.nome == nome:
                 clinica.cidade = nova_cidade
                 clinica.descricao = nova_descricao
-                break
+                break 
+
+    def abrir_tela(self):
+        pass
