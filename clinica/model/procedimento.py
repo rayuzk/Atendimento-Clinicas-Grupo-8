@@ -1,3 +1,4 @@
+from model.profissional import Profissional 
 class Procedimento():
     def __init__(self, descricao, custo, profissional):
         self.descricao = descricao
