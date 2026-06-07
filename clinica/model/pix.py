@@ -11,4 +11,4 @@ class Pix(Pagamento):
     
 
     def obter_dados_pagamento(self):
-        return f'Pagamento realizado via pix, cpf do pagador: {self.cpf}'
+        return f"Pagamento realizado via pix, cpf do pagador: {self.cpf}"

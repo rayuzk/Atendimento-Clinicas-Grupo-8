@@ -5,4 +5,4 @@ class Dinheiro(Pagamento):
         super().__init__(data, atendimento, paciente, valor_pago)
     
     def obter_dados_pagamento(self):
-        return 'Pagamento realizado em dinheiro'
+        return "Pagamento realizado em dinheiro"

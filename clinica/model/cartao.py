@@ -15,4 +15,4 @@ class Cartao(Pagamento):
         return self.__bandeira
     
     def obter_dados_pagamento(self):
-        return f'Pagamento realizado em cartão, bandeira: {self.bandeira}'
+        return f"Pagamento realizado em cartão, bandeira: {self.bandeira}"
