@@ -9,7 +9,7 @@ class ControladorPaciente:
 
         if idade < 18:
             raise ValueError(
-                “Paciente deve possuir 18 anos ou mais.”
+                "Paciente deve possuir 18 anos ou mais."
             )
 
         paciente = Paciente(
@@ -43,7 +43,7 @@ class ControladorPaciente:
 
                 if nova_idade < 18:
                     raise ValueError(
-                        “Paciente deve possuir 18 anos ou mais.”
+                        "Paciente deve possuir 18 anos ou mais."
                     )
 
                 paciente.nome = novo_nome
