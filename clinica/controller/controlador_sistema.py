@@ -19,7 +19,7 @@ class ControladorSistema:
 
     def abrir_menu(self):
         while True:
-            print("Bem-vindo ao menu principal, selecione a opação desejada :)")
+            print("\nBem-vindo ao menu principal, selecione a opação desejada :)")
             print("(1) Clínicas")
             print("(2) Pacientes")
             print("(3) Profissionais")
