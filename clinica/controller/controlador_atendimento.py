@@ -119,11 +119,61 @@ class ControladorAtendimento:
         busca = []
 
         for a in self.atendimentos:
-            if a.profissionl == profissional:
+            if a.profissional == profissional:
                 busca.append(a)
         
         return busca
 
+    
+    def relatorio_procedimentos_mais_realizados(self):
+        contagem = {}
 
+        for atendimento in self.atendimentos:
+            for procedimento in atendimento.procedimentos:
+
+                descricao = procedimento.descricao
+
+                if descricao in contagem:
+                    contagem[descricao] = contagem[descricao] + 1
+                else:
+                    contagem[descricao] = 1
+
+        if len(contagem) == 0:
+            print("Nenhum procedimento registrado.")
+            return
+
+        print("\nRelatórios de procedimentos mais realizados:")
+
+        for descricao in contagem:
+            print(descricao, "->", contagem[descricao], "vezes")
+
+    
+    def relatorio_procedimentos_valor(self):
+        todos_procedimentos = []
+
+        for atendimento in self.atendimentos:
+            for procedimento in atendimento.procedimentos:
+                todos_procedimentos.append(procedimento)
+
+        if len(todos_procedimentos) == 0:
+            print("Nenhum procedimento registrado.")
+            return
+
+        mais_caro = todos_procedimentos[0]
+        mais_barato = todos_procedimentos[0]
+
+        for procedimento in todos_procedimentos:
+
+            if procedimento.custo > mais_caro.custo:
+                mais_caro = procedimento
+
+            if procedimento.custo < mais_barato.custo:
+                mais_barato = procedimento
+
+        print("\nRelatório de procedimentos mais caros e mais baratos:")
+        print("Mais caro:", mais_caro.descricao, "- R$", mais_caro.custo)
+        print("Mais barato:", mais_barato.descricao, "- R$", mais_barato.custo)
+
+    
     def abrir_tela(self):
         pass
