@@ -7,7 +7,6 @@ class Pagamento(ABC):
         self.__atendimento = atendimento
         self.__paciente = paciente
         self.__valor_pago = valor_pago
-        self.__valor_restante = valor_restante
 
     @property
     def data(self):
