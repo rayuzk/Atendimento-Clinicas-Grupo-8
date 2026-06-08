@@ -67,11 +67,11 @@ class Atendimento:
         
     @property
     def procedimentos(self):
-        return self.__procedimentos.copy() 
+        return self.__procedimentos
     
     @property
     def pagamentos(self):
-        return self.__pagamentos.copy()
+        return self.__pagamentos
 
 
     def adicionar_procedimento(self, procedimento):

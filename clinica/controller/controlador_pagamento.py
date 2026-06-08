@@ -1,7 +1,9 @@
-from model.pagamento import Pagamento
+from model.pagamento import Dinheiro, Pix, Cartao
 
 class ControladorPagamento:
-    def __init__(self):
+
+    def __init__(self, controlador_sistema):
+        self.controlador_sistema = controlador_sistema
         self.pagamentos = []
 
     def incluir_pagamento(
@@ -15,50 +17,42 @@ class ControladorPagamento:
         numero_cartao=None,
         bandeira=None
     ):
-
         if atendimento is None:
-            print("Atendimento inválido")
-            return
+            raise ValueError("Atendimento inválido.")
 
         if paciente is None:
-            print("Paciente inválido")
-            return
+            raise ValueError("Paciente inválido.")
 
         if valor_pago <= 0:
-            print("Valor inválido")
-            return
+            raise ValueError("Valor inválido.")
 
         if tipo_pagamento is None:
-            print("Tipo de pagamento inválido")
-            return
+            raise ValueError("Tipo de pagamento inválido.")
 
-        
         if tipo_pagamento == "PIX" and cpf is None:
-            print("CPF obrigatório para PIX")
-            return
+            raise ValueError("CPF obrigatório para pagamento via PIX.")
 
         if tipo_pagamento == "CARTAO" and (numero_cartao is None or bandeira is None):
-            print("Dados do cartão inválidos")
-            return
+            raise ValueError("Número do cartão e bandeira são obrigatórios.")
 
-        pagamento = Pagamento(
-            data,
-            atendimento,
-            paciente,
-            valor_pago,
-            tipo_pagamento,
-            cpf,
-            numero_cartao,
-            bandeira
-        )
+        if tipo_pagamento == "DINHEIRO":
+            pagamento = Dinheiro(data, atendimento, paciente, valor_pago)
+
+        elif tipo_pagamento == "PIX":
+            pagamento = Pix(data, atendimento, paciente, valor_pago, cpf)
+
+        elif tipo_pagamento == "CARTAO":
+            pagamento = Cartao(data, atendimento, paciente, valor_pago, numero_cartao, bandeira)
+
+        else:
+            raise ValueError("Tipo de pagamento inválido. Use DINHEIRO, PIX ou CARTAO.")
 
         self.pagamentos.append(pagamento)
         atendimento.adicionar_pagamento(pagamento)
-
-        print("Pagamento registrado")
+        return pagamento
 
     def listar_pagamentos(self):
         return self.pagamentos
 
     def abrir_tela(self):
-        pass
+        self.controlador_sistema.tela_sistema.abrir_tela_pagamento()
