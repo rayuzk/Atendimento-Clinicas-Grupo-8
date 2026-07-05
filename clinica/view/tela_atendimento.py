@@ -172,8 +172,8 @@ class TelaAtendimento:
                 if mais_caro is None:
                     print("Nenhum procedimento registrado.")
                 else:
-                    print("\nProcedimento mais caro:", mais_caro.descricao, "- R$", mais_caro.custo)
-                    print("Procedimento mais barato:", mais_barato.descricao, "- R$", mais_barato.custo)
+                    print("\nProcedimento mais caro:", mais_caro.tipo_atendimento.descricao, "- R$", mais_caro.valor)
+                    print("Procedimento mais barato:", mais_barato.tipo_atendimento.descricao, "- R$", mais_barato.valor)
 
             elif opcao == "5":
                 break

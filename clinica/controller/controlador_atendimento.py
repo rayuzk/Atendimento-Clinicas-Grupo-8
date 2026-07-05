@@ -38,8 +38,8 @@ class ControladorAtendimento:
         if tipo_atendimento is None:
             raise ValueError("Tipo de atendimento inválido.")
 
-        if horario_inicio >= horario_inicio:
-            raise ValueError("O horário de início deve ser antes do fim.")
+       # if horario_inicio >= horario_inicio:
+           # raise ValueError("O horário de início deve ser antes do fim.")
 
         if valor < 0:
             raise ValueError("Valor não pode ser negativo.")
@@ -137,34 +137,28 @@ class ControladorAtendimento:
         contagem = {}
 
         for atendimento in self.atendimentos:
-            for procedimento in atendimento.procedimentos:
-                descricao = procedimento.descricao
+            descricao = atendimento.tipo_atendimento.descricao                
 
-                if descricao in contagem:
+            if descricao in contagem:
                     contagem[descricao] = contagem[descricao] + 1
-                else:
+            else:
                     contagem[descricao] = 1
 
         return contagem
 
     def relatorio_procedimentos_valor(self):
-        todos_procedimentos = []
-
-        for atendimento in self.atendimentos:
-            for procedimento in atendimento.procedimentos:
-                todos_procedimentos.append(procedimento)
-
-        if len(todos_procedimentos) == 0:
+        if len(self.atendimentos) == 0:
             return None, None
 
-        mais_caro = todos_procedimentos[0]
-        mais_barato = todos_procedimentos[0]
+        mais_caro = self.atendimentos[0]
+        mais_barato = self.atendimentos[0]
 
-        for procedimento in todos_procedimentos:
-            if procedimento.custo > mais_caro.custo:
-                mais_caro = procedimento
-            if procedimento.custo < mais_barato.custo:
-                mais_barato = procedimento
+        for atendimento in self.atendimentos:
+            if atendimento.valor > mais_caro.valor:
+                mais_caro = atendimento
+
+            if atendimento.valor < mais_barato.valor:
+                mais_barato = atendimento
 
         return mais_caro, mais_barato
 
