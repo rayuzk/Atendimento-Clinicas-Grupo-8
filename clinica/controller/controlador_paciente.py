@@ -1,10 +1,13 @@
 from model.paciente import Paciente
+from dao.paciente_dao import PacienteDAO
+
 
 class ControladorPaciente:
 
     def __init__(self, controlador_sistema):
         self.controlador_sistema = controlador_sistema
-        self.pacientes = []
+        self.__paciente_dao = PacienteDAO()
+        self.pacientes = self.__paciente_dao.carregar()
 
     def incluir_paciente(self, idade, nome, celular, cpf):
         if idade < 18:
@@ -16,6 +19,7 @@ class ControladorPaciente:
 
         paciente = Paciente(idade, nome, celular, cpf)
         self.pacientes.append(paciente)
+        self.__paciente_dao.salvar(self.pacientes)
         return paciente
 
     def listar_pacientes(self):
@@ -25,6 +29,7 @@ class ControladorPaciente:
         for paciente in self.pacientes:
             if paciente.cpf == cpf:
                 self.pacientes.remove(paciente)
+                self.__paciente_dao.salvar(self.pacientes)
                 return
         raise ValueError("Paciente não encontrado.")
 
@@ -36,6 +41,7 @@ class ControladorPaciente:
                 paciente.nome = novo_nome
                 paciente.celular = novo_celular
                 paciente.idade = nova_idade
+                self.__paciente_dao.salvar(self.pacientes)
                 return
         raise ValueError("Paciente não encontrado.")
 
