@@ -99,7 +99,7 @@ class TelaAtendimento:
                 tipo_atendimento = tipos[combo_tipo.current()]
 
                 self.controlador_sistema.controlador_atendimento.incluir_atendimento(
-                    clinica, paciente, professional,
+                    clinica, paciente, profissional,
                     ent_data.get(), ent_ini.get(), ent_fim.get(),
                     tipo_atendimento, float(ent_valor.get())
                 )
