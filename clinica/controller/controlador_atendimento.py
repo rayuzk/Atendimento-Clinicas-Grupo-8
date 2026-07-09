@@ -1,9 +1,12 @@
 from model.atendimento import Atendimento
+from dao.atendimento_dao import AtendimentoDAO
+
 
 class ControladorAtendimento:
 
     def __init__(self, controlador_sistema):
         self.controlador_sistema = controlador_sistema
+        self.__atendimento_dao = AtendimentoDAO()
         self.atendimentos = []
 
     def incluir_atendimento(

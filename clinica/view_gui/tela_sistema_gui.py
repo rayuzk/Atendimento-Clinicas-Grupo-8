@@ -1,22 +1,22 @@
 import tkinter as tk
 from tkinter import messagebox
-from view.tela_clinica import TelaClinica
-from view.tela_paciente import TelaPaciente
-from view.tela_profissional import TelaProfissional
-from view.tela_tipo_atendimento import TelaTipoAtendimento
-from view.tela_atendimento import TelaAtendimento
-from view.tela_pagamento import TelaPagamento
+from view_gui.tela_clinica_gui import TelaClinicaGUI
+from view_gui.tela_paciente_gui import TelaPacienteGUI
+from view_gui.tela_profissional_gui import TelaProfissionalGUI
+from view_gui.tela_tipo_atendimento_gui import TelaTipoAtendimentoGUI
+from view_gui.tela_atendimento_gui import TelaAtendimentoGUI
+from view_gui.tela_pagamento_gui import TelaPagamentoGUI
 
 class TelaSistema:
 
     def __init__(self, controlador_sistema):
         self.controlador_sistema = controlador_sistema
-        self.tela_clinica = TelaClinica(controlador_sistema)
-        self.tela_paciente = TelaPaciente(controlador_sistema)
-        self.tela_profissional = TelaProfissional(controlador_sistema)
-        self.tela_tipo_atendimento = TelaTipoAtendimento(controlador_sistema)
-        self.tela_atendimento = TelaAtendimento(controlador_sistema)
-        self.tela_pagamento = TelaPagamento(controlador_sistema)
+        self.tela_clinica = TelaClinicaGUI(controlador_sistema)
+        self.tela_paciente = TelaPacienteGUI(controlador_sistema)
+        self.tela_profissional = TelaProfissionalGUI(controlador_sistema)
+        self.tela_tipo_atendimento = TelaTipoAtendimentoGUI(controlador_sistema)
+        self.tela_atendimento = TelaAtendimentoGUI(controlador_sistema)
+        self.tela_pagamento = TelaPagamentoGUI(controlador_sistema)
 
     def abrir_tela_clinica(self):
         self.tela_clinica.abrir_tela()

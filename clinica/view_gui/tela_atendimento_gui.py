@@ -1,7 +1,7 @@
 import tkinter as tk
 from tkinter import ttk, messagebox
 
-class TelaAtendimento:
+class TelaAtendimentoGUI:
 
     def __init__(self, controlador_sistema):
         self.controlador_sistema = controlador_sistema
