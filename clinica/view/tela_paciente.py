@@ -1,3 +1,4 @@
+'''
 class TelaPaciente:
 
     def __init__(self, controlador_sistema):
@@ -76,4 +77,5 @@ class TelaPaciente:
 
             else:
                 print("Opção inválida!")
+'''
 

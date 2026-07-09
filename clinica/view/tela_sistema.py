@@ -1,3 +1,4 @@
+'''
 from view.tela_clinica import TelaClinica
 from view.tela_paciente import TelaPaciente
 from view.tela_profissional import TelaProfissional
@@ -71,3 +72,4 @@ class TelaSistema:
 
             else:
                 print("Opção inválida!")
+'''

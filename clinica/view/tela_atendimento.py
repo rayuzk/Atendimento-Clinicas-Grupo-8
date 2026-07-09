@@ -1,3 +1,4 @@
+'''
 class TelaAtendimento:
 
     def __init__(self, controlador_sistema):
@@ -180,3 +181,4 @@ class TelaAtendimento:
 
             else:
                 print("Opção inválida!")
+'''

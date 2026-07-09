@@ -1,3 +1,4 @@
+'''
 class TelaProfissional:
 
     def __init__(self, controlador_sistema):
@@ -79,3 +80,4 @@ class TelaProfissional:
 
             else:
                 print("Opção inválida!")
+'''
