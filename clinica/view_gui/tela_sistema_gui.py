@@ -7,7 +7,7 @@ from view_gui.tela_tipo_atendimento_gui import TelaTipoAtendimentoGUI
 from view_gui.tela_atendimento_gui import TelaAtendimentoGUI
 from view_gui.tela_pagamento_gui import TelaPagamentoGUI
 
-class TelaSistema:
+class TelaSistemaGUI:
 
     def __init__(self, controlador_sistema):
         self.controlador_sistema = controlador_sistema

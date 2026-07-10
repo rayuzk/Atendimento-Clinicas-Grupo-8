@@ -4,7 +4,7 @@ from controller.controlador_profissional import ControladorProfissional
 from controller.controlador_tipo_atendimento import ControladorTipoAtendimento
 from controller.controlador_atendimento import ControladorAtendimento
 from controller.controlador_pagamento import ControladorPagamento
-from view.tela_sistema import TelaSistema
+from view_gui.tela_sistema_gui import TelaSistemaGUI
 
 class ControladorSistema:
 
@@ -15,7 +15,7 @@ class ControladorSistema:
         self.controlador_tipo_atendimento = ControladorTipoAtendimento(self)
         self.controlador_atendimento = ControladorAtendimento(self)
         self.controlador_pagamento = ControladorPagamento(self)
-        self.tela_sistema = TelaSistema(self)
+        self.tela_sistema_gui = TelaSistemaGUI(self)
 
     def iniciar_sistema(self):
-        self.tela_sistema.abrir_tela()
+        self.tela_sistema_gui.abrir_tela()

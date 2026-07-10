@@ -1,10 +1,13 @@
 from model.pagamento import Dinheiro, Pix, Cartao
+from dao.pagamento_dao import PagamentoDAO
+
 
 class ControladorPagamento:
 
     def __init__(self, controlador_sistema):
         self.controlador_sistema = controlador_sistema
-        self.pagamentos = []
+        self.__pagamento_dao = PagamentoDAO()
+        self.pagamentos = self.__pagamento_dao.carregar()
 
     def incluir_pagamento(
         self,
@@ -47,11 +50,17 @@ class ControladorPagamento:
         else:
             raise ValueError("Tipo de pagamento inválido. Use DINHEIRO, PIX ou CARTAO.")
 
+
         self.pagamentos.append(pagamento)
+        self.__pagamento_dao.salvar(self.pagamentos)
+        
+
         atendimento.adicionar_pagamento(pagamento)
+        
         return pagamento
 
     def listar_pagamentos(self):
+        self.pagamentos = self.__pagamento_dao.carregar()
         return self.pagamentos
 
     def abrir_tela(self):

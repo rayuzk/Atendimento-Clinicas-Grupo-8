@@ -7,7 +7,7 @@ class ControladorAtendimento:
     def __init__(self, controlador_sistema):
         self.controlador_sistema = controlador_sistema
         self.__atendimento_dao = AtendimentoDAO()
-        self.atendimentos = []
+        self.atendimentos = self.__atendimento_dao.carregar()
 
     def incluir_atendimento(
         self,
@@ -41,7 +41,7 @@ class ControladorAtendimento:
         if tipo_atendimento is None:
             raise ValueError("Tipo de atendimento inválido.")
 
-       # if horario_inicio >= horario_inicio:
+        # if horario_inicio >= horario_inicio:
            # raise ValueError("O horário de início deve ser antes do fim.")
 
         if valor < 0:
@@ -59,14 +59,17 @@ class ControladorAtendimento:
         )
 
         self.atendimentos.append(atendimento)
+        self.__atendimento_dao.salvar(self.atendimentos)
         return atendimento
 
     def listar_atendimentos(self):
+        self.atendimentos = self.__atendimento_dao.carregar()
         return self.atendimentos
 
     def excluir_atendimento(self, atendimento):
         if atendimento in self.atendimentos:
             self.atendimentos.remove(atendimento)
+            self.__atendimento_dao.salvar(self.atendimentos)
         else:
             raise ValueError("Atendimento não encontrado.")
 
@@ -76,6 +79,8 @@ class ControladorAtendimento:
         if procedimento is None:
             raise ValueError("Procedimento inválido.")
         atendimento.adicionar_procedimento(procedimento)
+    
+        self.__atendimento_dao.salvar(self.atendimentos)
 
     def adicionar_pagamento(self, atendimento, pagamento):
         if atendimento is None:
@@ -83,6 +88,8 @@ class ControladorAtendimento:
         if pagamento is None:
             raise ValueError("Pagamento inválido.")
         atendimento.adicionar_pagamento(pagamento)
+        
+        self.__atendimento_dao.salvar(self.atendimentos)
 
     def busca_paciente(self, paciente):
         busca = []
